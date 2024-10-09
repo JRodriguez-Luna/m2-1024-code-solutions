@@ -1,4 +1,4 @@
-function MidTextSection() {
+export function MidTextSection() {
   return (
     <section>
       <p>

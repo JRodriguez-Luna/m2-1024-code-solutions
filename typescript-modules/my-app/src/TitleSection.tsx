@@ -1,4 +1,4 @@
-function TitleSection() {
+export function TitleSection() {
   return (
     <section>
       <h3>
