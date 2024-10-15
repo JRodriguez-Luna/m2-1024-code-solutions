@@ -1,23 +1,7 @@
-import { useState } from 'react';
-
 type Props = {
-  descs: string[];
+  desc: string;
 };
 
-export function ImageDescription({ descs }: Props) {
-  const [descIndex, setdescIndex] = useState(0);
-
-  function handleClick() {
-    if (descIndex >= descs.length - 1) {
-      setdescIndex(0);
-    } else {
-      setdescIndex(descIndex + 1);
-    }
-  }
-
-  return (
-    <div>
-      <p onClick={handleClick}>{descs[descIndex]}</p>
-    </div>
-  );
+export function ImageDescription({ desc }: Props) {
+  return <p>{desc}</p>;
 }
