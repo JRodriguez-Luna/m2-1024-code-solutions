@@ -4,6 +4,7 @@ import './HotButton.css';
 import './App.css';
 
 const colors = ['three', 'six', 'nine', 'twelve', 'fifteen', 'eighteen'];
+const text = 'Hot Button';
 
 function App() {
   const [numClicks, setNumClicks] = useState(0);
@@ -19,7 +20,7 @@ function App() {
     <HotButton
       color={color}
       onClick={handleClick}
-      label="Button"
+      label={text}
       msg={`Clicks: ${numClicks}`}
     />
   );
