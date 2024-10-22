@@ -14,7 +14,7 @@ export function ValidatedInput({ label, active, onChange }: Props) {
         <span className="relative right-13 bottom-2">Password</span>
         <div className="flex items-center">
           <input
-            type="text"
+            type="password"
             className="mr-1"
             id="password"
             onChange={onChange}
