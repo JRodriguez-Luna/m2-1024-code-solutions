@@ -13,7 +13,10 @@ function App() {
     'Ferret',
   ];
 
-  return <RotatingBanner items={items} />
+  return <RotatingBanner
+  items={items}
+  count={items.length}
+  />
 }
 
 export default App
