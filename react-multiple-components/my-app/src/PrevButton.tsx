@@ -1,11 +1,15 @@
-import { GrFormPrevious } from "react-icons/gr";
+import { GrFormPrevious } from 'react-icons/gr';
 
-export function PrevButton() {
+type Props = {
+  onClick: () => void;
+};
+
+export function PrevButton({ onClick }: Props) {
   return (
     <div>
-      <button>
+      <button onClick={onClick}>
         <GrFormPrevious />
       </button>
     </div>
-  )
+  );
 }

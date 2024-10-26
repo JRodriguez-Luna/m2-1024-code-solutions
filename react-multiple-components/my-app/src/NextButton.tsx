@@ -1,11 +1,15 @@
-import { GrFormNext } from "react-icons/gr";
+import { GrFormNext } from 'react-icons/gr';
 
-export function NextButton() {
+type Props = {
+  onClick: () => void;
+};
+
+export function NextButton({ onClick }: Props) {
   return (
     <div>
-      <button>
+      <button onClick={onClick}>
         <GrFormNext />
       </button>
     </div>
-  )
+  );
 }

@@ -1,16 +1,15 @@
 type Props = {
-  size: number,
-}
+  size: number;
+  currIndex: number;
+};
 
-export function Indicators({ size }: Props) {
+export function Indicators({ size, currIndex }: Props) {
   const buttons = [];
-  for(let i = 0; i < size; i++) {
-    buttons.push( <button>{i}</button> );
+  for (let i = 0; i < size; i++) {
+    buttons.push(
+      <button className={currIndex === i ? 'selected-item' : ''}>{i}</button>
+    );
   }
 
-  return (
-    <div>
-      {buttons}
-    </div>
-  )
+  return <div>{buttons}</div>;
 }
