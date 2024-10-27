@@ -13,18 +13,26 @@ export function RotatingBanner({ items, count }: Props) {
   const [index, setIndex] = useState(0);
 
   function handleNext() {
-    setIndex((prevIndex) => (prevIndex < items.length - 1 ? prevIndex + 1 : 0));
+    setIndex((prevIndex) => (prevIndex + 1) % items.length);
   }
 
   function handlePrev() {
-    setIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : items.length - 1));
+    setIndex((prevIndex) => (prevIndex - 1 + items.length) % items.length);
+  }
+
+  function handleIndicatorClick(newIndex: number) {
+    setIndex(newIndex);
   }
 
   return (
     <>
       <Banner item={items[index]} />
       <PrevButton onClick={handlePrev} />
-      <Indicators size={count} currIndex={index} />
+      <Indicators
+        size={count}
+        currIndex={index}
+        onIndicatorClick={handleIndicatorClick}
+      />
       <NextButton onClick={handleNext} />
     </>
   );
