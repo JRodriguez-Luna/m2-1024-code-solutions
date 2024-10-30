@@ -1,0 +1,24 @@
+.list-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+ul {
+  list-style-type: none;
+  padding: 10px 0 0 5px;
+  margin: 10px 0 0;
+  font-size: 16px;
+  position: absolute;
+  width: 107.7%;
+  text-align: left;
+  background-color: white;
+  border-radius: 10px;
+  top: -25px;
+}
+
+li {
+  padding: 5px 0;
+  font-size: 1.1em;
+  color: black;
+  width: 100%;
+}
