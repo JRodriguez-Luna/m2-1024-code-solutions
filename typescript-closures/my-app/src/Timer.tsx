@@ -4,12 +4,14 @@ import { useEffect, useState } from 'react';
 export function Timer() {
   const [time, setTime] = useState(0);
   useEffect(() => {
+    // Closure: 1
     const timerId = setTimeout(() => {
-      setTime(time + 1);
+      // Closure: 2
+      setTime((prevTime) => prevTime + 1);
       console.log(`Time is: ${time}`);
     }, 1000);
     return () => clearTimeout(timerId);
-  }, []);
+  }, [time]);
 
   return (
     <div>
