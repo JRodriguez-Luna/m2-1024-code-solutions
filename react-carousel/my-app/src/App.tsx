@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Carousel } from './Carousel';
 import './App.css'
 
 const images = [
@@ -29,7 +30,7 @@ const images = [
 ];
 
 function App() {
-
+  return <Carousel />
 }
 
 export default App
