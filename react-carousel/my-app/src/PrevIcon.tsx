@@ -1,9 +1,13 @@
 import { GrPrevious } from 'react-icons/gr';
 
-export function PrevIcon() {
+type Props = {
+  onClick: () => void;
+};
+
+export function PrevIcon({ onClick }: Props) {
   return (
-    <div className='icon'>
+    <div className="icon" onClick={onClick}>
       <GrPrevious />
     </div>
-  )
+  );
 }

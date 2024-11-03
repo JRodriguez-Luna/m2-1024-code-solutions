@@ -10,3 +10,12 @@ img {
 .center-column {
   flex-direction: column;
 }
+
+.icon {
+  padding: calc(100% / 2) 20px;
+  cursor: pointer;
+}
+
+.dots {
+  cursor: pointer;
+}

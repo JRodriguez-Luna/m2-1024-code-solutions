@@ -1,9 +1,12 @@
 import { GrNext } from 'react-icons/gr';
-import './NextIcon.css';
 
-export function NextIcon() {
+type Props = {
+  onClick: () => void;
+};
+
+export function NextIcon({ onClick }: Props) {
   return (
-    <div className='icon'>
+    <div className="icon" onClick={onClick}>
       <GrNext />
     </div>
   );
