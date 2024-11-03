@@ -30,7 +30,7 @@ const images = [
 ];
 
 function App() {
-  return <Carousel />
+  return <Carousel images={images}/>
 }
 
 export default App

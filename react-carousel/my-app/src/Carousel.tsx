@@ -1,13 +1,25 @@
 import { NextIcon } from "./NextIcon";
 import { PrevIcon } from "./PrevIcon";
 import { ImageDisplay } from "./ImageDisplay";
+import { Dots } from "./Dots";
+import './Carousel.css';
 
-export function Carousel() {
+type Props = {
+  images: {
+    src: string;
+    alt: string;
+  }[],
+}
+
+export function Carousel({ images }: Props) {
   return (
-    <div>
+    <div className="wrapper">
       <PrevIcon />
-      <ImageDisplay />
+      <div className="center-column">
+        <ImageDisplay />
+        <Dots />
+      </div>
       <NextIcon />
     </div>
-  )
+  );
 }

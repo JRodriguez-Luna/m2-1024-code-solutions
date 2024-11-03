@@ -1,0 +1,12 @@
+.wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+img {
+  width: 400px;
+}
+
+.center-column {
+  flex-direction: column;
+}
