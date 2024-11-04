@@ -26,12 +26,20 @@ export function Carousel({ images, count }: Props) {
     );
   }
 
+  function handleImageClick(newSelect: number) {
+    setSelected(newSelect);
+  }
+
   return (
     <div className="wrapper">
       <PrevIcon onClick={handlePrev} />
       <div className="center-column">
         <ImageDisplay image={images[selected]} />
-        <Dots count={count} selected={selected} />
+        <Dots
+          count={count}
+          selected={selected}
+          onImageClick={handleImageClick}
+        />
       </div>
       <NextIcon onClick={handleNext} />
     </div>
