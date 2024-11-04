@@ -3,7 +3,7 @@ import { PrevIcon } from './PrevIcon';
 import { ImageDisplay } from './ImageDisplay';
 import { Dots } from './Dots';
 import './Carousel.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 type Props = {
   images: {
@@ -15,20 +15,27 @@ type Props = {
 
 export function Carousel({ images, count }: Props) {
   const [selected, setSelected] = useState(0);
+  const length = images.length;
 
   function handleNext() {
-    setSelected((prevSelected) => (prevSelected + 1) % images.length);
+    setSelected((prevSelected) => (prevSelected + 1) % length);
   }
 
   function handlePrev() {
-    setSelected(
-      (prevSelected) => (prevSelected - 1 + images.length) % images.length
-    );
+    setSelected((prevSelected) => (prevSelected - 1 + length) % length);
   }
 
   function handleImageClick(newSelect: number) {
     setSelected(newSelect);
   }
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setSelected((prevSelected) => (prevSelected + 1) % length);
+    }, 3000);
+
+    return () => clearInterval(id);
+  }, [selected]);
 
   return (
     <div className="wrapper">
