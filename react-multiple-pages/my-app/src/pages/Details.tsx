@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 import { type Item, readItem } from '../lib/read';
+import { useParams } from 'react-router-dom';
 
 type Props = {
-  itemId: number;
   onDone: () => void;
 };
-export function Details({ itemId, onDone }: Props) {
+export function Details({ onDone }: Props) {
+  const { itemId } = useParams<{ itemId: string }>();
   const [item, setItem] = useState<Item>();
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<unknown>();
