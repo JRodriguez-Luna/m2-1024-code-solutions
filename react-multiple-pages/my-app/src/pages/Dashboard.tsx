@@ -39,8 +39,11 @@ export function Dashboard() {
       <hr className="py-1" />
       <div className="flex flex-wrap">
         {items?.map((item) => (
-          <Link to={`/details/${item.itemId}`} key={item.itemId} className="w-full md:w-1/2 lg:w-1/3 pr-4 pl-4">
-            <ItemCard item={item}  />
+          <Link
+            to={`/details/${item.itemId}`}
+            key={item.itemId}
+            className="w-full md:w-1/2 lg:w-1/3 pr-4 pl-4">
+            <ItemCard item={item} />
           </Link>
         ))}
       </div>
@@ -50,13 +53,10 @@ export function Dashboard() {
 
 type CardProps = {
   item: Item;
-  onClick: () => void;
 };
-function ItemCard({ item, onClick }: CardProps) {
+function ItemCard({ item }: CardProps) {
   return (
-    <div
-      onClick={onClick}
-      className="block cursor-pointer text-gray-900 rounded border border-gray-300 mb-4">
+    <div className="block cursor-pointer text-gray-900 rounded border border-gray-300 mb-4">
       <div className="flex-auto p-6">
         <h5 className="font-bold mb-3">{item.name}</h5>
       </div>
