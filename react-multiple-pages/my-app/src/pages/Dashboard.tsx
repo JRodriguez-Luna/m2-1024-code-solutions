@@ -1,10 +1,8 @@
 import { useEffect, useState } from 'react';
 import { type Item, readItems } from '../lib/read';
+import { Link } from 'react-router-dom';
 
-type Props = {
-  onDetails: (itemId: number) => void;
-};
-export function Dashboard({ onDetails }: Props) {
+export function Dashboard() {
   const [items, setItems] = useState<Item[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<unknown>();
@@ -41,9 +39,9 @@ export function Dashboard({ onDetails }: Props) {
       <hr className="py-1" />
       <div className="flex flex-wrap">
         {items?.map((item) => (
-          <div key={item.itemId} className="w-full md:w-1/2 lg:w-1/3 pr-4 pl-4">
-            <ItemCard item={item} onClick={() => onDetails(item.itemId)} />
-          </div>
+          <Link to={`/details/${item.itemId}`} key={item.itemId} className="w-full md:w-1/2 lg:w-1/3 pr-4 pl-4">
+            <ItemCard item={item}  />
+          </Link>
         ))}
       </div>
     </div>
