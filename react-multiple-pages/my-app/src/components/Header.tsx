@@ -1,3 +1,5 @@
+import { Outlet } from 'react-router-dom';
+
 type Props = {
   onNavigate: (page: string) => void;
 };
@@ -18,7 +20,7 @@ export function Header({ onNavigate }: Props) {
           </li>
         </ul>
       </nav>
-      {/* Page content goes here */}
+      {<Outlet />}
     </div>
   );
 }
