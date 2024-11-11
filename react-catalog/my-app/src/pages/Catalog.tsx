@@ -6,8 +6,8 @@ export function Catalog() {
 
   products.map((item: Product) => {
     list.push(
-      <li className="w-64 py-2 h-100 border-solid border-2 cursor-pointer" key={item.productId}>
-        <div className="w-full h-40 flex items-center justify-center">
+      <li className="py-2 h-100 border-solid border-2 cursor-pointer" key={item.productId}>
+        <div className="w-full h-72 flex items-center justify-center">
           <img
             src={item.imageUrl}
             alt={item.name}
@@ -24,12 +24,12 @@ export function Catalog() {
   });
 
   return (
-    <div className="mx-10">
+    <div className="mx-10 max-w-full">
       <div className="text-[60px] border-b">
         <h1>Catalog</h1>
       </div>
-      <div className="my-5 w-100 h-100">
-        <ul className="flex flex-wrap gap-5 justify-start">{list}</ul>
+      <div className="my-5 w-full h-auto">
+        <ul className="grid grid-cols-3 gap-5">{list}</ul>
       </div>
     </div>
   );
