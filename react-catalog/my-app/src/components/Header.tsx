@@ -3,7 +3,7 @@ export function Header() {
   const listItem = [];
 
   for (let i = 0; i < navItem.length; i++) {
-    listItem.push(<li className="pt-2 cursor-pointer">{navItem[i]}</li>);
+    listItem.push(<li className="pt-2 cursor-pointer" key={i}>{navItem[i]}</li>);
   }
 
   return (
