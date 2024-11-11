@@ -7,7 +7,7 @@ export function Header() {
   }
 
   return (
-    <div className="flex w-100 h-10 bg-slate-900">
+    <div className="flex w-100 h-10 bg-neutral-900">
       <nav className="w-full text-white">
         <ul className="flex space-x-3 px-3 ">{listItem}</ul>
       </nav>
