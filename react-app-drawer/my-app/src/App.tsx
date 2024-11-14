@@ -3,7 +3,7 @@ import { About } from './pages/About';
 import { Catalog } from './pages/Catalog';
 import { NotFound } from './pages/NotFound';
 import { ProductDetails } from './pages/ProductDetails';
-import { Header } from './components/Header';
+import { AppDrawer } from './components/AppDrawer';
 
 const menuItems = [
   { name: 'About', iconUrl: '/hylian-emblem.svg', path: '/about' },
@@ -13,7 +13,7 @@ const menuItems = [
 export function App() {
   return (
     <Routes>
-      <Route path="/" element={<Header menuItems={menuItems} />}>
+      <Route path="/" element={<AppDrawer menuItems={menuItems} />}>
         <Route index element={<Catalog />} />
         <Route path="details/:productId" element={<ProductDetails />} />
         <Route path="about" element={<About />} />
