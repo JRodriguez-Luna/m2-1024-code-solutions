@@ -1,19 +1,17 @@
-import { useRef } from 'react';
+import { useState } from 'react';
+import { Modal } from './Modal';
 import './App.css';
 
 function App() {
-  const modal = useRef<HTMLDialogElement>(null);
-  const openModal = (): void => {
-    modal.current?.showModal();
-  };
-  const closeModal = (): void => {
-    modal.current?.close();
-  };
+  const [isOpen, setIsOpen] = useState(false);
+
+  const openModal = () => setIsOpen(true);
+  const closeModal = () => setIsOpen(false);
 
   return (
     <>
       <button onClick={openModal}>Delete Me</button>
-      <dialog ref={modal}>
+      <Modal isOpen={isOpen} onClose={closeModal}>
         <p>Do you really want to delete?</p>
         <button onClick={closeModal}>Cancel</button>
         <button
@@ -23,7 +21,7 @@ function App() {
           }}>
           Delete
         </button>
-      </dialog>
+      </Modal>
     </>
   );
 }
