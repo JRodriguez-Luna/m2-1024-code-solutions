@@ -22,3 +22,23 @@ Answer the following questions in the provided markdown file before turning in t
   - Mocha, Jasmine, AVA, QUnit
 
 ## Notes
+
+### Jest Watch Mode Options
+
+1. **`f` - Run Only Failing Tests**
+
+   - Useful when fixing multiple failing tests.
+   - Focuses only on tests that are currently failing to track progress.
+
+2. **`o` - Run Tests Related to Changed Files**
+
+   - Runs tests for files changed since the last commit.
+   - Ideal for testing changes made in the current branch.
+
+3. **`p` - Run Tests Matching a Pattern**
+
+   - Allows running tests that match a specific pattern in their name.
+   - Handy for targeting specific tests during development.
+
+4. **`q` - Quit Watch Mode**
+   - Exits the Jest watch mode.
