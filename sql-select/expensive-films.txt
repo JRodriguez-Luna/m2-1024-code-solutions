@@ -1,0 +1,14 @@
+          title          | replacementCost 
+-------------------------+-----------------
+ Cruelty Unforgiven      |           29.99
+ Cupboard Sinners        |           29.99
+ Clockwork Paradise      |           29.99
+ Clyde Theory            |           29.99
+ Chariots Conspiracy     |           29.99
+ Ballroom Mockingbird    |           29.99
+ Arabia Dogma            |           29.99
+ Bonnie Holocaust        |           29.99
+ Blindness Gun           |           29.99
+ Desperate Trainspotting |           29.99
+(10 rows)
+

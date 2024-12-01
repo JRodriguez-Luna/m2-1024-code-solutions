@@ -1,0 +1,54 @@
+ filmId |        title         
+--------+----------------------
+    118 | Canyon Stock
+    149 | Christmas Moonshine
+    105 | Bull Shawshank
+    114 | Camelot Vacation
+    140 | Cheaper Clyde
+    147 | Chocolat Harry
+     89 | Borrowers Bedazzled
+    101 | Brotherhood Blanket
+    109 | Butterfly Chocolat
+    111 | Caddyshack Jedi
+    130 | Celebrity Horn
+    132 | Chainsaw Uptown
+    143 | Chill Luck
+     12 | Alaska Phantom
+     79 | Blade Polish
+     87 | Boondock Ballroom
+     90 | Boulevard Mob
+     97 | Bride Intrigue
+    108 | Butch Panther
+     17 | Alone Trip
+     18 | Alter Victory
+    110 | Cabin Flash
+    119 | Caper Motions
+    128 | Catch Amistad
+     63 | Bedazzled Married
+     23 | Anaconda Confessions
+     11 | Alamo Videotape
+    142 | Chicken Hellfighters
+     26 | Annie Identity
+     27 | Anonymous Human
+    213 | Date Speed
+     76 | Birdcage Casper
+     82 | Blood Argonauts
+     85 | Bonnie Holocaust
+     14 | Alice Fantasia
+     52 | Ballroom Mockingbird
+     34 | Arabia Dogma
+     91 | Bound Cheaper
+     36 | Argonauts Town
+      1 | Academy Dinosaur
+     38 | Ark Ridgemont
+     39 | Armageddon Lost
+     40 | Army Flintstones
+     41 | Arsenic Independence
+     19 | Amadeus Holy
+     54 | Banger Pinocchio
+     64 | Beethoven Exorcist
+     66 | Beneath Rush
+    122 | Carrie Bunch
+    153 | Citizen Shrek
+(50 rows)
+
