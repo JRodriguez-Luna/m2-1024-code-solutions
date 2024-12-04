@@ -1,1 +1,1 @@
-SELECT "filmId", "title" FROM "films" ORDER BY "rentalRate" LIMIT 50;
+SELECT "filmId", "title", "rentalRate" FROM "films" WHERE "rentalRate" < 1 LIMIT 50;

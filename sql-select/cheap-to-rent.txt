@@ -1,54 +1,54 @@
- filmId |        title         
---------+----------------------
-    118 | Canyon Stock
-    149 | Christmas Moonshine
-    105 | Bull Shawshank
-    114 | Camelot Vacation
-    140 | Cheaper Clyde
-    147 | Chocolat Harry
-     89 | Borrowers Bedazzled
-    101 | Brotherhood Blanket
-    109 | Butterfly Chocolat
-    111 | Caddyshack Jedi
-    130 | Celebrity Horn
-    132 | Chainsaw Uptown
-    143 | Chill Luck
-     12 | Alaska Phantom
-     79 | Blade Polish
-     87 | Boondock Ballroom
-     90 | Boulevard Mob
-     97 | Bride Intrigue
-    108 | Butch Panther
-     17 | Alone Trip
-     18 | Alter Victory
-    110 | Cabin Flash
-    119 | Caper Motions
-    128 | Catch Amistad
-     63 | Bedazzled Married
-     23 | Anaconda Confessions
-     11 | Alamo Videotape
-    142 | Chicken Hellfighters
-     26 | Annie Identity
-     27 | Anonymous Human
-    213 | Date Speed
-     76 | Birdcage Casper
-     82 | Blood Argonauts
-     85 | Bonnie Holocaust
-     14 | Alice Fantasia
-     52 | Ballroom Mockingbird
-     34 | Arabia Dogma
-     91 | Bound Cheaper
-     36 | Argonauts Town
-      1 | Academy Dinosaur
-     38 | Ark Ridgemont
-     39 | Armageddon Lost
-     40 | Army Flintstones
-     41 | Arsenic Independence
-     19 | Amadeus Holy
-     54 | Banger Pinocchio
-     64 | Beethoven Exorcist
-     66 | Beneath Rush
-    122 | Carrie Bunch
-    153 | Citizen Shrek
+ filmId |        title         | rentalRate 
+--------+----------------------+------------
+      1 | Academy Dinosaur     |       0.99
+     11 | Alamo Videotape      |       0.99
+     12 | Alaska Phantom       |       0.99
+    213 | Date Speed           |       0.99
+     14 | Alice Fantasia       |       0.99
+     17 | Alone Trip           |       0.99
+     18 | Alter Victory        |       0.99
+     19 | Amadeus Holy         |       0.99
+     23 | Anaconda Confessions |       0.99
+     26 | Annie Identity       |       0.99
+     27 | Anonymous Human      |       0.99
+     34 | Arabia Dogma         |       0.99
+     36 | Argonauts Town       |       0.99
+     38 | Ark Ridgemont        |       0.99
+     39 | Armageddon Lost      |       0.99
+     40 | Army Flintstones     |       0.99
+     41 | Arsenic Independence |       0.99
+     52 | Ballroom Mockingbird |       0.99
+     54 | Banger Pinocchio     |       0.99
+     63 | Bedazzled Married    |       0.99
+     64 | Beethoven Exorcist   |       0.99
+     66 | Beneath Rush         |       0.99
+     76 | Birdcage Casper      |       0.99
+     79 | Blade Polish         |       0.99
+     82 | Blood Argonauts      |       0.99
+     85 | Bonnie Holocaust     |       0.99
+     87 | Boondock Ballroom    |       0.99
+     89 | Borrowers Bedazzled  |       0.99
+     90 | Boulevard Mob        |       0.99
+     91 | Bound Cheaper        |       0.99
+     97 | Bride Intrigue       |       0.99
+    101 | Brotherhood Blanket  |       0.99
+    105 | Bull Shawshank       |       0.99
+    108 | Butch Panther        |       0.99
+    109 | Butterfly Chocolat   |       0.99
+    110 | Cabin Flash          |       0.99
+    111 | Caddyshack Jedi      |       0.99
+    114 | Camelot Vacation     |       0.99
+    118 | Canyon Stock         |       0.99
+    119 | Caper Motions        |       0.99
+    122 | Carrie Bunch         |       0.99
+    128 | Catch Amistad        |       0.99
+    130 | Celebrity Horn       |       0.99
+    132 | Chainsaw Uptown      |       0.99
+    140 | Cheaper Clyde        |       0.99
+    142 | Chicken Hellfighters |       0.99
+    143 | Chill Luck           |       0.99
+    147 | Chocolat Harry       |       0.99
+    149 | Christmas Moonshine  |       0.99
+    153 | Citizen Shrek        |       0.99
 (50 rows)
 
