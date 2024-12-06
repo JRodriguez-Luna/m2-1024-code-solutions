@@ -1,0 +1,13 @@
+ firstName | lastName  
+-----------+-----------
+ Nick      | Wahlberg
+ Zero      | Cage
+ Val       | Bolger
+ Fay       | Kilmer
+ Walter    | Torn
+ Cate      | Mcqueen
+ Ed        | Mansfield
+ River     | Dean
+ John      | Suvari
+(9 rows)
+
