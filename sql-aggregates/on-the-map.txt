@@ -1,0 +1,113 @@
+                 name                  | totalCitiesPerCountry 
+---------------------------------------+-----------------------
+ Finland                               |                     1
+ Afghanistan                           |                     1
+ Poland                                |                     8
+ Anguilla                              |                     1
+ Virgin Islands, U.S.                  |                     1
+ Venezuela                             |                     7
+ Cambodia                              |                     2
+ Myanmar                               |                     2
+ Liechtenstein                         |                     1
+ Dominican Republic                    |                     3
+ China                                 |                    53
+ Lithuania                             |                     1
+ Malawi                                |                     1
+ Switzerland                           |                     3
+ Australia                             |                     1
+ Spain                                 |                     5
+ Peru                                  |                     4
+ Latvia                                |                     2
+ Egypt                                 |                     6
+ Oman                                  |                     2
+ New Zealand                           |                     1
+ Angola                                |                     2
+ France                                |                     4
+ Kazakstan                             |                     2
+ Tunisia                               |                     1
+ North Korea                           |                     1
+ Kenya                                 |                     2
+ Russian Federation                    |                    28
+ Senegal                               |                     1
+ Netherlands                           |                     5
+ Mozambique                            |                     3
+ Sweden                                |                     1
+ Azerbaijan                            |                     2
+ French Guiana                         |                     1
+ Vietnam                               |                     6
+ Indonesia                             |                    14
+ Argentina                             |                    13
+ Yemen                                 |                     4
+ South Korea                           |                     5
+ Slovakia                              |                     1
+ Greece                                |                     2
+ Taiwan                                |                    10
+ Tanzania                              |                     3
+ Sudan                                 |                     2
+ United Arab Emirates                  |                     3
+ French Polynesia                      |                     2
+ Nigeria                               |                    13
+ Ethiopia                              |                     1
+ Japan                                 |                    31
+ United Kingdom                        |                     8
+ Mexico                                |                    30
+ Bolivia                               |                     2
+ Turkey                                |                    15
+ Nepal                                 |                     1
+ Yugoslavia                            |                     2
+ Zambia                                |                     1
+ Chile                                 |                     3
+ Malaysia                              |                     3
+ Belarus                               |                     2
+ Nauru                                 |                     1
+ Algeria                               |                     3
+ Brunei                                |                     1
+ Morocco                               |                     3
+ Philippines                           |                    20
+ Turkmenistan                          |                     1
+ Paraguay                              |                     3
+ Bahrain                               |                     1
+ United States                         |                    35
+ India                                 |                    60
+ Hong Kong                             |                     1
+ Tuvalu                                |                     1
+ Sri Lanka                             |                     1
+ Saudi Arabia                          |                     5
+ Holy See (Vatican City State)         |                     1
+ Greenland                             |                     1
+ Iran                                  |                     8
+ Hungary                               |                     1
+ Faroe Islands                         |                     1
+ Kuwait                                |                     1
+ Armenia                               |                     1
+ Austria                               |                     3
+ Ukraine                               |                     6
+ Germany                               |                     7
+ Brazil                                |                    28
+ Runion                                |                     1
+ Czech Republic                        |                     1
+ Bangladesh                            |                     3
+ Israel                                |                     4
+ South Africa                          |                    11
+ Pakistan                              |                     5
+ Tonga                                 |                     1
+ Romania                               |                     2
+ Madagascar                            |                     1
+ Colombia                              |                     6
+ Saint Vincent and the Grenadines      |                     1
+ Moldova                               |                     1
+ Cameroon                              |                     2
+ Puerto Rico                           |                     2
+ Congo, The Democratic Republic of the |                     2
+ Thailand                              |                     3
+ Estonia                               |                     1
+ Chad                                  |                     1
+ Italy                                 |                     7
+ Iraq                                  |                     1
+ American Samoa                        |                     1
+ Bulgaria                              |                     2
+ Ecuador                               |                     3
+ Canada                                |                     7
+ Gambia                                |                     1
+(109 rows)
+
