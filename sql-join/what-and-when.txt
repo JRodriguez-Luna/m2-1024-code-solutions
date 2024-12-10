@@ -1,0 +1,5 @@
+ releaseYear | name  |     title     
+-------------+-------+---------------
+        2006 | Music | Boogie Amelie
+(1 row)
+
