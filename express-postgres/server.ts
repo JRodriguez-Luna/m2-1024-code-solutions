@@ -29,7 +29,7 @@ app.get('/api/films', async (req, res, next) => {
 app.get('/api/films/:filmId', async (req, res, next) => {
   try {
     const { filmId } = req.params;
-    if (filmId === undefined) {
+    if (!filmId || isNaN(Number(filmId)) || Number(filmId) < 1) {
       throw new ClientError(400, 'filmsId is required!');
     }
     const sql = `
@@ -54,18 +54,30 @@ app.get('/api/films/:filmId', async (req, res, next) => {
 app.put('/api/films/:filmId', async (req, res, next) => {
   try {
     const { filmId } = req.params;
-    if (filmId === undefined) {
-      throw new ClientError(400, "filmId is required!");
+    const { title } = req.query;
+    if (!filmId || isNaN(Number(filmId)) || Number(filmId) < 1) {
+      throw new ClientError(400, 'filmId is required!');
     }
-    const sql_title = `
+    if (!title) {
+      throw new ClientError(400, 'title is required!');
+    }
+    const sql = `
       update "films"
-        set "title" = $title
-      where "filmId" = $1;
+        set "title" = $1
+      where "filmId" = $2
+      returning *;
     `;
-
+    const params = [title, Number(filmId)];
+    const result = await db.query(sql, params);
+    const [film] = result.rows;
+    if (!film) {
+      throw new ClientError(404, `filmId ${filmId} not found!`);
+    }
+    res.send(film);
+  } catch (err) {
+    next(err);
   }
-
-})
+});
 
 app.use(errorMiddleware);
 
