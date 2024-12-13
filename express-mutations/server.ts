@@ -17,10 +17,10 @@ app.post('/api/actors', async (req, res, next) => {
   try {
     const { firstName, lastName } = req.query;
     if (!firstName) {
-      throw new ClientError(400, 'firstName is required.');
+      throw new ClientError(400, 'firstName is not found.');
     }
     if (!lastName) {
-      throw new ClientError(400, 'lastName is required.');
+      throw new ClientError(400, 'lastName is not found.');
     }
     const sql = `
       insert into "actors" ("firstName", "lastName")
@@ -31,9 +31,71 @@ app.post('/api/actors', async (req, res, next) => {
     const result = await db.query(sql, params);
     const [actor] = result.rows;
     if (!actor) {
-      throw new ClientError(404, 'actor is required.');
+      throw new ClientError(404, 'first or last name is required.');
     }
     res.status(201).json(actor);
+  } catch (err) {
+    next(err);
+  }
+});
+
+app.put('/api/actors/:actorId', async (req, res, next) => {
+  try {
+    const { actorId } = req.params;
+    const { firstName, lastName } = req.query;
+    if (
+      Number.isNaN(actorId) ||
+      !Number.isInteger(+actorId) ||
+      Number(actorId) < 1
+    ) {
+      throw new ClientError(400, 'actorId is required.');
+    }
+    if (!firstName || !lastName) {
+      throw new ClientError(400, 'firstName or lastName is not found.');
+    }
+    const sql = `
+      update "actors"
+      set
+        "firstName" = $1,
+        "lastName" = $2
+      where "actorId" = $3
+      returning *;
+    `;
+    const params = [firstName, lastName, actorId];
+    const result = await db.query(sql, params);
+    const [actor] = result.rows;
+    if (!actor) {
+      throw new ClientError(404, `actorId ${actorId} was not found.`);
+    }
+    res.status(200).json(actor);
+  } catch (err) {
+    next(err);
+  }
+});
+
+app.delete('/api/actors/:actorId', async (req, res, next) => {
+  try {
+    const { actorId } = req.params;
+    if (
+      Number.isNaN(actorId) ||
+      !Number.isInteger(+actorId) ||
+      Number(actorId) < 1
+    ) {
+      throw new ClientError(400, 'actorId is required.');
+    }
+    const sql = `
+      delete
+        from "actors"
+        where "actorId" = $1
+      returning *;
+    `;
+    const params = [actorId];
+    const result = await db.query(sql, params);
+    const [actor] = result.rows;
+    if (!actor) {
+      throw new ClientError(404, `actorId ${actorId} was not found.`);
+    }
+    res.sendStatus(204).json(actor);
   } catch (err) {
     next(err);
   }
