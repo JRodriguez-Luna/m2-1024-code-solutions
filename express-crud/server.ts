@@ -57,15 +57,44 @@ app.get('/api/grades/:gradeId', async (req, res, next) => {
   }
 });
 
+app.post('/api/grades', async (req, res, next) => {
+  try {
+    const { name, course, score } = req.body;
+    if (!name || !course || !score || score < 0 || score > 100) {
+      throw new ClientError(
+        400,
+        'name, course, score is required or score (0-100) are required.'
+      );
+    }
+
+    const sql = `
+      insert into "grades" ("name", "course", "score")
+      values ($1, $2, $3)
+      returning *;
+    `;
+
+    const params = [name, course, score];
+    const result = await db.query(sql, params);
+    const [grade] = result.rows;
+    if (!grade) {
+      throw new ClientError(404, `name, course, and score required.`);
+    }
+
+    res.status(201).json(grade);
+  } catch (err) {
+    next(err);
+  }
+});
+
 app.put('/api/grades/:gradeId', async (req, res, next) => {
   try {
     const { gradeId } = req.params;
     const { name, course, score } = req.body;
 
-    if (!name || !course || !score || score < 0) {
+    if (!name || !course || !score || score < 0 || score > 100) {
       throw new ClientError(
         400,
-        'name, course, score is required or score greater than 0.'
+        'name, course, score is required or score (0-100) are required.'
       );
     }
 
@@ -86,6 +115,36 @@ app.put('/api/grades/:gradeId', async (req, res, next) => {
       throw new ClientError(404, `gradeId ${gradeId} does not exist.`);
     }
     res.status(200).json(grade);
+  } catch (err) {
+    next(err);
+  }
+});
+
+app.delete('/api/grades/:gradeId', async (req, res, next) => {
+  try {
+    const { gradeId } = req.params;
+    if (
+      Number.isNaN(gradeId) ||
+      !Number.isInteger(+gradeId) ||
+      Number(gradeId) < 1
+    ) {
+      throw new ClientError(400, `Invalid gradeId.`);
+    }
+    const sql = `
+      delete
+        from "grades"
+        where "gradeId" = $1
+        returning *;
+    `;
+
+    const params = [gradeId];
+    const result = await db.query(sql, params);
+    const [grade] = result.rows;
+    if (!grade) {
+      throw new ClientError(404, `gradeId ${gradeId} does not exist.`);
+    }
+
+    res.status(204).json(grade);
   } catch (err) {
     next(err);
   }
