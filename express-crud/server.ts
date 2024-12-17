@@ -9,6 +9,13 @@ const db = new pg.Pool({
   },
 });
 
+type Grade = {
+  gradeId?: number;
+  name: string;
+  course: string;
+  score: number; // A number between 0 and 100
+};
+
 const app = express();
 app.use(express.json());
 
@@ -59,7 +66,8 @@ app.get('/api/grades/:gradeId', async (req, res, next) => {
 
 app.post('/api/grades', async (req, res, next) => {
   try {
-    const { name, course, score } = req.body;
+    const { name, course, score }: Grade = req.body;
+
     if (!name || !course || !score || score < 0 || score > 100) {
       throw new ClientError(
         400,
@@ -89,9 +97,15 @@ app.post('/api/grades', async (req, res, next) => {
 app.put('/api/grades/:gradeId', async (req, res, next) => {
   try {
     const { gradeId } = req.params;
-    const { name, course, score } = req.body;
+    const { name, course, score }: Grade = req.body;
 
-    if (!name || !course || !score || score < 0 || score > 100) {
+    if (
+      !name ||
+      !course ||
+      !Number.isInteger(score) ||
+      score < 0 ||
+      score > 100
+    ) {
       throw new ClientError(
         400,
         'name, course, score is required or score (0-100) are required.'
