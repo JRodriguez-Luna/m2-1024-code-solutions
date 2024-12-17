@@ -15,7 +15,7 @@ app.use(express.json());
 
 app.post('/api/actors', async (req, res, next) => {
   try {
-    const { firstName, lastName } = req.query;
+    const { firstName, lastName } = req.body;
     if (!firstName) {
       throw new ClientError(400, 'firstName is not found.');
     }
@@ -42,7 +42,7 @@ app.post('/api/actors', async (req, res, next) => {
 app.put('/api/actors/:actorId', async (req, res, next) => {
   try {
     const { actorId } = req.params;
-    const { firstName, lastName } = req.query;
+    const { firstName, lastName } = req.body;
     if (
       Number.isNaN(actorId) ||
       !Number.isInteger(+actorId) ||
@@ -95,7 +95,7 @@ app.delete('/api/actors/:actorId', async (req, res, next) => {
     if (!actor) {
       throw new ClientError(404, `actorId ${actorId} was not found.`);
     }
-    res.sendStatus(204).json(actor);
+    res.status(204).json(actor);
   } catch (err) {
     next(err);
   }
