@@ -19,13 +19,70 @@ export function Todos() {
   const [error, setError] = useState<unknown>();
 
   /* Implement useEffect to fetch all todos. Hints are at the bottom of the file. */
-  useEffect(() => {}, []);
+  useEffect(() => {
+    async function getData() {
+      try {
+        const res = await fetch('/api/todos');
+        if (!res.ok) throw new Error(`Response Status: ${res.status}`);
+
+        const json = await res.json();
+        setTodos(json);
+        setIsLoading(false);
+      } catch (err) {
+        setError(err);
+      }
+    }
+
+    getData();
+  }, []);
 
   /* Implement addTodo to add a new todo. Hints are at the bottom of the file. */
-  async function addTodo(newTodo: UnsavedTodo) {}
+  async function addTodo(newTodo: UnsavedTodo) {
+    try {
+      const header = new Headers();
+      header.append('Content-Type', 'application/json');
+
+      const res = await fetch('api/todos', {
+        method: 'POST',
+        body: JSON.stringify(newTodo),
+        headers: header,
+      });
+
+      if (!res.ok) throw new Error(`Response Status: ${res.status}`);
+
+      const json = await res.json();
+
+      const todo = [...todos, json];
+      console.log('todo', todo);
+      setTodos(todo);
+      setIsLoading(false);
+    } catch (err) {
+      setError(err);
+    }
+  }
 
   /* Implement toggleCompleted to toggle the completed state of a todo. Hints are at the bottom of the file. */
-  async function toggleCompleted(todo: Todo) {}
+  async function toggleCompleted(todo: Todo) {
+    try {
+      const updatedTodo = { ...todo, isCompleted: !todo.isCompleted };
+
+      const res = await fetch(`/api/todos/${todo.todoId}`, {
+        method: 'PUT',
+        body: JSON.stringify(updatedTodo),
+        headers: { 'Content-Type': 'application/json' },
+      });
+
+      const json = await res.json();
+
+      const updatedTodos = todos.map((task) =>
+        task.todoId === json.todoId ? json : task
+      );
+
+      setTodos(updatedTodos);
+    } catch (err) {
+      setError(err);
+    }
+  }
 
   if (isLoading) {
     return <div>Loading...</div>;
