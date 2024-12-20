@@ -1,5 +1,4 @@
 import { Link, useParams } from 'react-router-dom';
-import { readProduct } from '../../lib/read';
 import { useEffect, useState } from 'react';
 import { Product } from '../../lib/data';
 import { toDollars } from '../../lib/to-dollars';
@@ -7,19 +6,41 @@ import { toDollars } from '../../lib/to-dollars';
 export function Details() {
   const { productId } = useParams<{ productId: string }>();
   const [product, setProduct] = useState<Product>();
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<unknown>();
 
   useEffect(() => {
     async function loadProduct(productId: number) {
+      const url = `/api/products/${productId}`;
       try {
-        const product = await readProduct(productId);
+        const res = await fetch(url);
+        if (!res.ok) {
+          throw new Error(`Response status: ${res.status}`);
+        }
+
+        const product = await res.json();
         setProduct(product);
+        setIsLoading(false);
       } catch (err) {
-        console.error('Error Loading:', err);
+        setError(err);
       }
     }
 
     if (productId) loadProduct(+productId);
   }, [productId]);
+
+  if (isLoading) {
+    return <div>...Loading</div>;
+  }
+
+  if (error) {
+    console.error('fetch error', error);
+    return (
+      <div>
+        Error! {error instanceof Error ? error.message : 'Unknown Error.'}
+      </div>
+    );
+  }
 
   return (
     <div className="mx-5 my-2">

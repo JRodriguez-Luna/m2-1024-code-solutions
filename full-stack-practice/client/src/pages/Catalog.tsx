@@ -1,15 +1,44 @@
 import { Link } from 'react-router-dom';
 import { Product } from '../../lib/data';
-import { readCatalog } from '../../lib/read';
 import { useEffect, useState } from 'react';
 import { toDollars } from '../../lib/to-dollars';
 
 export function Catalog() {
   const [list, setList] = useState<Product[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<unknown>();
 
   useEffect(() => {
-    readCatalog().then((products) => setList(products));
+    async function getData() {
+      try {
+        const res = await fetch('/api/products');
+        if (!res.ok) {
+          throw new Error(`Response Status: ${res.status}`);
+        }
+
+        const json = await res.json();
+        setList(json);
+        setIsLoading(false);
+      } catch (err) {
+        setError(err);
+      }
+    }
+
+    getData();
   }, []);
+
+  if (isLoading) {
+    return <div>...Loading</div>;
+  }
+
+  if (error) {
+    console.error('fetch error', error);
+    return (
+      <div>
+        Error! {error instanceof Error ? error.message : 'Unknown Error.'}
+      </div>
+    );
+  }
 
   return (
     <div className="mx-10 w-100 pb-5">
