@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars -- Remove me! */
 import 'dotenv/config';
-import pg from 'pg';
+import pg, { Client } from 'pg';
 import argon2 from 'argon2';
 import express from 'express';
 import jwt from 'jsonwebtoken';
@@ -35,7 +35,20 @@ app.post('/api/auth/sign-up', async (req, res, next) => {
     if (!username || !password) {
       throw new ClientError(400, 'username and password are required fields');
     }
-    throw new Error('Not implemented');
+
+    const hashedPassword = await argon2.hash(password);
+    const sql = `
+      insert into "users" ("username", "hashedPassword")
+      values($1, $2)
+      returning *;
+    `;
+
+    const param = [username, hashedPassword];
+    const result = await db.query(sql, param);
+    const [user] = result.rows;
+
+    res.status(201).json(user);
+
     /* TODO:
      * Delete the "Not implemented" error.
      * Hash the user's password with `argon2.hash()` (note that this method is async)
