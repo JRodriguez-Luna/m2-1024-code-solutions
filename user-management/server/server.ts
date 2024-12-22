@@ -69,7 +69,40 @@ app.post('/api/auth/sign-in', async (req, res, next) => {
     if (!username || !password) {
       throw new ClientError(401, 'invalid login');
     }
-    throw new Error('Not implemented');
+
+    const sql = `
+      select
+        "userId",
+        "hashedPassword"
+      from "users"
+      where "username" = $1;
+    `;
+
+    const param = [username];
+    console.log(param);
+    const result = await db.query(sql, param);
+    const [user] = result.rows;
+
+    if (!user) {
+      throw new ClientError(401, 'invalid login');
+    }
+
+    const validPassword = await argon2.verify(user.hashedPassword, password);
+
+    if (!validPassword) {
+      throw new ClientError(401, 'invalid login');
+    }
+
+    // Payload object
+    const payload = {
+      userId: user.userId,
+      username: user.username,
+    };
+
+    const token = jwt.sign(payload, hashKey);
+
+    res.status(200).json({ payload, token });
+
     /* TODO:
      * Delete the "Not implemented" error.
      * Query the database to find the "userId" and "hashedPassword" for the "username".
