@@ -101,7 +101,10 @@ app.post('/api/auth/sign-in', async (req, res, next) => {
 
     const token = jwt.sign(payload, hashKey);
 
-    res.status(200).json({ payload, token });
+    res.status(200).json({
+      user: payload,
+      token,
+    });
 
     /* TODO:
      * Delete the "Not implemented" error.
@@ -139,7 +142,7 @@ app.get('/api/todos', async (req, res, next) => {
   }
 });
 
-app.post('/api/todos', async (req, res, next) => {
+app.post('/api/todos', authMiddleware, async (req, res, next) => {
   try {
     const { task, isCompleted = false } = req.body;
     if (!task || typeof isCompleted !== 'boolean') {
@@ -159,7 +162,7 @@ app.post('/api/todos', async (req, res, next) => {
   }
 });
 
-app.put('/api/todos/:todoId', async (req, res, next) => {
+app.put('/api/todos/:todoId', authMiddleware, async (req, res, next) => {
   try {
     const todoId = Number(req.params.todoId);
     if (!Number.isInteger(todoId) || todoId < 1) {
