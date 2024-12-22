@@ -10,6 +10,7 @@ type Auth = {
 export function saveAuth(user: User, token: string): void {
   const auth: Auth = { user, token };
   localStorage.setItem(authKey, JSON.stringify(auth));
+  console.log('Saving auth:', auth);
 }
 
 export function removeAuth(): void {
@@ -24,6 +25,8 @@ export function readUser(): User | undefined {
 
 export function readToken(): string | undefined {
   const auth = localStorage.getItem(authKey);
+  console.log('Auth from localStorage:', auth);
+
   if (!auth) return undefined;
   return (JSON.parse(auth) as Auth).token;
 }
@@ -37,7 +40,12 @@ export type Todo = UnsavedTodo & {
 };
 
 export async function readTodos(): Promise<Todo[]> {
-  const res = await fetch('/api/todos');
+  const req = {
+    headers: {
+      Authorization: `Bearer ${readToken()}`,
+    },
+  };
+  const res = await fetch('/api/todos', req);
   if (!res.ok) throw new Error(`fetch Error ${res.status}`);
   return (await res.json()) as Todo[];
 }
@@ -47,6 +55,7 @@ export async function insertTodo(todo: UnsavedTodo): Promise<Todo> {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
+      Authorization: `Bearer ${readToken()}`,
     },
     body: JSON.stringify(todo),
   };
@@ -60,6 +69,7 @@ export async function updateTodo(todo: Todo): Promise<Todo> {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
+      Authorization: `Bearer ${readToken()}`,
     },
     body: JSON.stringify(todo),
   };
@@ -71,6 +81,9 @@ export async function updateTodo(todo: Todo): Promise<Todo> {
 export async function removeTodo(todoId: number): Promise<void> {
   const req = {
     method: 'DELETE',
+    headers: {
+      Authorization: `Bearer ${readToken()}`,
+    },
   };
   const res = await fetch(`/api/todos/${todoId}`, req);
   if (!res.ok) throw new Error(`fetch Error ${res.status}`);

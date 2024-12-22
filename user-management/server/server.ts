@@ -73,13 +73,13 @@ app.post('/api/auth/sign-in', async (req, res, next) => {
     const sql = `
       select
         "userId",
+        "username",
         "hashedPassword"
       from "users"
       where "username" = $1;
     `;
 
     const param = [username];
-    console.log(param);
     const result = await db.query(sql, param);
     const [user] = result.rows;
 
@@ -127,7 +127,7 @@ app.post('/api/auth/sign-in', async (req, res, next) => {
   }
 });
 
-app.get('/api/todos', async (req, res, next) => {
+app.get('/api/todos', authMiddleware, async (req, res, next) => {
   try {
     const sql = `
       select *
