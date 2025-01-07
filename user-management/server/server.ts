@@ -72,9 +72,7 @@ app.post('/api/auth/sign-in', async (req, res, next) => {
 
     const sql = `
       select
-        "userId",
-        "username",
-        "hashedPassword"
+        *
       from "users"
       where "username" = $1;
     `;
